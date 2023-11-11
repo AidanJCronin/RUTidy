@@ -142,7 +142,7 @@ export default function Home (){
                         <div key={group.group?.groupID} className = "homePageGroupDiv">
                             <Link to={'/groupdetails/' + (group.group?.groupID || '')} className="homeGroupName">
         {group.group?.name || ''}</Link>
-                            <Link to={'/create/task/' + (group.group?.groupID || '')} className="homeGroupTask">Create Task</Link>
+                            <Link to={'/edit/task/' + (group.group?.groupID || '') + '/' + (1)} className="homeGroupTask">Edit Task</Link>
                             <p onClick = {() => handleLeaveGroup(group.uigroupID, true)}>Leave group</p>
                         </div>
                     )

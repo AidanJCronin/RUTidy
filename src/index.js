@@ -8,6 +8,8 @@ import Profile from "./js/Profile";
 import EditProfile from "./js/EditProfile";
 import CreateGroup from "./js/CreateGroup";
 import CreateTask from "./js/CreateTask";
+import EditTask from "./js/EditTask";
+import AdminTasks from "./js/AdminTasks";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 
 
@@ -22,6 +24,8 @@ root.render(
       <Route path = "/profile/edit" element = {<EditProfile />}></Route>
       <Route path = "/groupdetails/:groupID" element = {<GroupDetails/>}></Route>
       <Route path = "/create/task/:groupID" element = {<CreateTask/>}></Route>
+      <Route path = "/edit/task/:groupID/:taskID" element = {<EditTask/>}></Route>
+      <Route path = "/admin/tasks" element = {<AdminTasks />}></Route>
       <Route path = "/create/group" element = {<CreateGroup/>}></Route>
     </Routes>
   </BrowserRouter>

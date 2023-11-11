@@ -7,14 +7,13 @@ import "../css/CreateTask.css";
 import axios from "axios";
 
 
-export default function Create(props){
+export default function CreateTask(props){
     const [taskName, setTaskName] = useState("");
     const [taskDescription, setTaskDescription] = useState("");
     const [taskDueDate, setTaskDueDate] = useState(new Date());
     const [taskPriority, setTaskPriority] = useState("");
 
     const{groupID} = useParams();
-    const parsedGroupID = parseInt(groupID, 10);
     const userID = sessionStorage.getItem("userID");
     const initialStatus = "not started";
 
@@ -22,31 +21,24 @@ export default function Create(props){
 
     const navigate = useNavigate();
 
+    const handleCreateTaskClick = (event) => {
+        event.preventDefault();
+        handleCreateTask();
+    }
+
     async function handleCreateTask(){
-        if (taskName === "") { 
-            setError("Please enter a name for your Task!");
+        if (taskName === "" | taskDescription === "" | taskDueDate === "" | taskPriority === "") { 
+            setError("Please enter all fields!");
             return;
         }
-        if (taskDescription === "") { 
-            setError("Please enter a Description for your Task!");
-            return;
-        }
-        if (taskDueDate === "") { 
-            setError("Please enter a due date for your Task!");
-            return;
-        }
-        if (taskPriority === "") { 
-            setError("Please enter a priority for your Task!");
-            return;
-        }
+        const isoDueDate = taskDueDate.toISOString();
         console.log(taskName);
-        console.log(taskDueDate);
+        console.log(isoDueDate);
         console.log(taskDescription);
         console.log(taskPriority);
-        const isoDueDate = taskDueDate.toISOString();
         axios.post("http://localhost:8080/task/create", 
-        {"name":taskName, "description":taskDescription, "dueDate":taskDueDate,
-        "priority":taskPriority, "status":initialStatus,"userID":userID, "groupID":parsedGroupID})
+        {"name":taskName, "description":taskDescription, "dueDate":isoDueDate,
+        "priority":taskPriority, "status":initialStatus,"userID":userID, "groupID":groupID})
         .then((response) => { 
             const {message} = response.data;
             if (message !== "Task created successfully"){
@@ -86,7 +78,7 @@ export default function Create(props){
                 </select>
                 <br></br>
                 {error !== "" && <h3 className = "errorMessage">{error}</h3>}
-                <button className = "createButton" onClick = {handleCreateTask}>Create Task!</button>
+                <button className = "createButton" onClick={(event) => handleCreateTaskClick(event)}>Create Task!</button>
                 <br></br>
                 <button className = "goHome" onClick = {() => navigate("/home")}>home</button>
             </div>

@@ -1,4 +1,4 @@
-.createTaskPage { 
+.editTaskPage { 
     position: absolute;
     top: 0;
     left: 0;
@@ -12,24 +12,24 @@
     radial-gradient(ellipse at 10% 10%, #4c3d63 0%, transparent 55%);
 }
 
-.createTaskPage h1 { 
+.editTaskPage h1 { 
     margin: 0;
     padding-top: 50px;
 }
 
-.createTaskPage p {
+.editTaskPage p {
     margin-top: 10px;
 }
 
-.createTaskPage input { 
+.editTaskPage input { 
     height: 1.5rem;
     width: 10rem;
 }
 
-.createTaskForm { 
+.editTaskForm { 
     margin-top: 10%;
     height: 60vh;
-    width: 30vw;
+    width: 50vw;
     background-color: white;
     border-radius: 30px;
     margin-left: auto;
@@ -48,8 +48,27 @@
     margin-bottom: 10px;
 }
 
+.taskDescription{
 
-.createButton { 
+}
+
+.taskDueDate{
+
+}
+
+.taskStatus{
+
+}
+
+.taskPriority{
+
+}
+
+.taskAssignment{
+
+}
+
+.updateButton { 
     margin-top: 30px;
     padding-top: 0;
     font: 17px;
@@ -62,6 +81,6 @@
     radial-gradient(ellipse at 10% 10%, #4c3d63 0%, transparent 55%);
 }
 
-.createButton:hover {
+.updateButton:hover {
     cursor: pointer;
 }
